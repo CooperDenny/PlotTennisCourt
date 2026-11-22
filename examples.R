@@ -77,3 +77,36 @@ side <- tennis_court_side(max_height = 3) +
   scale_colour_manual(values = c("#3A86FF", "#2A9D8F", "#FB8500", "#E63946"), name = NULL) +
   theme(legend.position = "bottom") + guides(colour = guide_legend(nrow = 2))
 save(side, "tennis_court_side.png", 9, 3)
+
+##################################################################
+# Gallery: presets, half courts, horizontal courts, serve and side views
+##################################################################
+
+#Half courts on each surface preset
+save(plot_tennis_court(surface = "hard", half = TRUE), "tennis_half_hard.png", 4.6, 5)
+save(plot_tennis_court(surface = "clay", half = TRUE), "tennis_half_clay.png", 4.6, 5)
+
+#Horizontal courts: full with singles sticks, and a half court
+save(plot_tennis_court(surface = "grass", orientation = "horizontal", singles_sticks = TRUE),
+     "tennis_horizontal_sticks.png", 7, 3.8)
+save(plot_tennis_court(surface = "hard", orientation = "horizontal", half = TRUE),
+     "tennis_horizontal_half.png", 5, 4.4)
+
+#Any colours you like
+save(plot_tennis_court(court_colour = "#3B3F8C", boundary_colour = "#2E7D5B"), "tennis_court_custom.png", 3.6, 6.6)
+
+#Serve map without a colour column, and on clay
+save(tennis_serve_map(serves), "tennis_serve_map_plain.png", 5, 5.8)
+save(tennis_serve_map(serves, surface = "clay"), "tennis_serve_map_clay.png", 5, 5.8)
+
+#The side view at true scale (height_scale = 1) and on grass
+true_scale <- tennis_court_side(max_height = 3, height_scale = 1) +
+  geom_path(data = flights, aes(x = x, y = height, colour = shot), linewidth = 0.8) +
+  scale_colour_manual(values = c("#3A86FF", "#2A9D8F", "#FB8500", "#E63946"), name = NULL) +
+  theme(legend.position = "bottom") + guides(colour = guide_legend(nrow = 2))
+save(true_scale, "tennis_court_side_true_scale.png", 9, 2.4)
+grass_side <- tennis_court_side(max_height = 3, surface = "grass") +
+  geom_path(data = flights, aes(x = x, y = height, colour = shot), linewidth = 0.8) +
+  scale_colour_manual(values = c("#3A86FF", "#2A9D8F", "#FB8500", "#E63946"), name = NULL) +
+  theme(legend.position = "bottom") + guides(colour = guide_legend(nrow = 2))
+save(grass_side, "tennis_court_side_grass.png", 9, 3)

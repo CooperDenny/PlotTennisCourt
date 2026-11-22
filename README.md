@@ -53,3 +53,39 @@ All lines are 5 cm wide and lie inside the dimensions they mark: a 23.77 m × 10
 
 `tennis_court_side(max_height = 3) + geom_path(data = flights, aes(x, height, colour = shot))` (illustrative drag-free ball flights, not tracking data)
 ![Side view](images/tennis_court_side.png)
+
+## Gallery
+
+### Surface presets and half courts
+
+`plot_tennis_court(surface = "hard", half = TRUE)`, `surface = "clay"` and `surface = "grass"` (with singles sticks):
+
+<img src="images/tennis_half_hard.png" width="32%" alt="Hard half court"> <img src="images/tennis_half_clay.png" width="32%" alt="Clay half court"> <img src="images/tennis_half_court.png" width="32%" alt="Grass half court with singles sticks">
+
+### Horizontal courts
+
+`orientation = "horizontal"` on grass with singles sticks, and as a half court:
+
+<img src="images/tennis_horizontal_sticks.png" width="58%" alt="Horizontal grass court with singles sticks"> <img src="images/tennis_horizontal_half.png" width="40%" alt="Horizontal half court">
+
+### Any colours
+
+The four schemes above plus `plot_tennis_court(court_colour = "#3B3F8C", boundary_colour = "#2E7D5B")`:
+
+<img src="images/tennis_court_1.png" width="18%" alt="Blue hard court"> <img src="images/tennis_court_2.png" width="18%" alt="Clay court"> <img src="images/tennis_court_3.png" width="18%" alt="Grass court"> <img src="images/tennis_court_4.png" width="18%" alt="Blue court, green surround"> <img src="images/tennis_court_custom.png" width="18%" alt="Custom colours">
+
+### Serve maps
+
+Without a colour column, `tennis_serve_map(serves)`, and on clay, `tennis_serve_map(serves, surface = "clay")`:
+
+<img src="images/tennis_serve_map_plain.png" width="49%" alt="Serve map"> <img src="images/tennis_serve_map_clay.png" width="49%" alt="Serve map on clay">
+
+### Side view scale
+
+At true scale (`height_scale = 1`) the court is a 9:1 strip and every flight looks flat, which is why the default stretches heights 2× and says so on the plot:
+
+![Side view at true scale](images/tennis_court_side_true_scale.png)
+
+The same flights on grass, `tennis_court_side(max_height = 3, surface = "grass")`:
+
+![Side view on grass](images/tennis_court_side_grass.png)
